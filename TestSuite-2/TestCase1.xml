@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="8488c8c4-705a-4499-9ab1-e94f59fb103e" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TestCase1" searchProperties="true" xmlns:con="http://eviware.com/soapui/config"><con:settings><con:setting id="8488c8c4-705a-4499-9ab1-e94f59fb103efileName">TestCase1</con:setting></con:settings><con:testStep type="groovy" name="GroovyScript1" id="38fdbaa4-3266-4b6f-b6bf-12ac9ab322d3"><con:settings/><con:config><script>log.info "Shyamchandar"
+a=100
+b=200
+c=a*b
+log.info c
+log.info testRunner.metaClass.methods*.name.unique().sort()
+
+
+
+
+</script></con:config></con:testStep><con:testStep type="groovy" name="Hello" id="ddbb59c1-babb-4cb7-a196-de1d4a8c9945"><con:settings/><con:config><script>class Hello{
+	def log;
+	def context;
+	def testRunner;
+
+	def Hello(log,context,testRunner){
+		this.log=log
+		this.context=context
+		this.testRunner=testRunner
+	}
+	def sayhello(){
+		log.info("Shyamchandar")
+	}
+}
+context.setProperty("Hello",new Hello(log,context,testRunner))
+</script></con:config></con:testStep><con:testStep type="groovy" name="callHello" id="7a4a32e2-75f9-497b-b6aa-477d81778d69"><con:settings/><con:config><script>def teststep=testRunner.testCase.getTestStepByName("Hello")
+teststep.run(testRunner,context)
+context.Hello.sayhello()</script></con:config></con:testStep><con:properties/><con:reportParameters/></con:testCase>
